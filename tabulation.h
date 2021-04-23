@@ -5,7 +5,7 @@
 
 static const int KEY_LENGTH = 64;
 static const int CHUNK_SIZE = 8;
-static const int NUM_CHUNKS = (KEY_LENGTH - 1) / CHUNK_SIZE + 1;
+static const int NUM_CHUNKS = ((KEY_LENGTH - 1) / CHUNK_SIZE) + 1;
 static const int HASH_TABLE_SIZE = 1 << CHUNK_SIZE;  // 2^CHUNK_SIZE
 
 // return a random number between 0 and limit inclusive.
@@ -20,9 +20,9 @@ static int randLim(int limit) {
   return retval;
 }
 
-void initialize(int hashLength);
-unsigned long extractChunk(unsigned long key, int numChunks, int chunkIndex);
-unsigned long tabulationHash(unsigned long key, int numChunks);
+void hashFuncTable_initialize(int hashLength);
+unsigned long extractChunk(unsigned long key, int chunkSize, int chunkIndex);
+unsigned long tabulationHash(unsigned long key, int chunkSize, int numChunks);
 unsigned long hashChunk(unsigned long chunkValue, int chunkIndex);
 
 #endif
