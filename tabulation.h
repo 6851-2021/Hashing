@@ -2,11 +2,7 @@
 #define tabulation_H
 
 #include <stdlib.h>
-
-static const int KEY_LENGTH = 64;
-static const int CHUNK_SIZE = 8;
-static const int NUM_CHUNKS = ((KEY_LENGTH - 1) / CHUNK_SIZE) + 1;
-static const int HASH_TABLE_SIZE = 1 << CHUNK_SIZE;  // 2^CHUNK_SIZE
+#include "utils.h"
 
 // return a random number between 0 and limit inclusive.
 static int randLim(int limit) {
@@ -20,9 +16,9 @@ static int randLim(int limit) {
   return retval;
 }
 
-void hashFuncTable_initialize(int hashLength);
-unsigned long extractChunk(unsigned long key, int chunkSize, int chunkIndex);
-unsigned long tabulationHash(unsigned long key, int chunkSize, int numChunks);
-unsigned long hashChunk(unsigned long chunkValue, int chunkIndex);
+table_t* hashFuncTable_initialize(int hashLength);
+table_t extractChunk(elt_t key, int chunkIndex);
+table_t tabulationHash(table_t* hashFuncTable, elt_t key);
+table_t getHashChunk(table_t* hashFuncTable, table_t chunkValue, int chunkIndex);
 
 #endif
