@@ -14,10 +14,7 @@ typedef struct {
 } probeArray;
 
 void probeArray_delete(probeArray* arr);
-
-probeArray probeArray_initialize(int tableSize);
-
-void probeArray_insert(probeArray * arr, elt_t element);
+probeArray* probeArray_make(int tableSize, elt_t* elements, int numElements);
 bool probeArray_query(probeArray * arr, elt_t element);
 
 #endif
