@@ -5,7 +5,7 @@
 #include "cuckoo.h"
 #include "linearprobe.h"
 #include "tabulation.h"
-#include "util.h"
+#include "utils.h"
 
 typedef struct {
   double time;
